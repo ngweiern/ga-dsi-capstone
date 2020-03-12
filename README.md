@@ -58,14 +58,15 @@ The pipeline:
 
 #### Provided Data
 
-For this project, there are four datasets provided:
+For this project, there are three datasets provided:
 
-- [2017 SAT Scores](./data/sat_2017.csv)
-- [2018 SAT Scores](./data/sat_2018.csv)
-- [2017 ACT Scores](./data/act_2017.csv)
-- [2018 ACT Scores](./data/act_2018.csv)
+- [flight summary information](./data/admin.csv)
+- [flight radar information](./data/trails-twn-to-hkg.feather)
+- [weather information](./data/metar-vhhh.csv)
 
-These data give average SAT and ACT scores by state, as well as participation rates, for the graduating class of 2017 and for that of 2018.
+The flight summary and radar information for January 2017 covering Asia, Africa, Oceania, Europe was obtained from commercial flight tracking website FlightRadar24. 
+
+The weather information for Hong Kong International Airport in the month of January 2017 was obtained from Iowa Environmental Mesonet.
 
 #### Data Dictionary
 
@@ -135,8 +136,17 @@ These data give average SAT and ACT scores by state, as well as participation ra
 
 ### Conclusion and Recommendations
 
-Although the participation rates of either test are negatively correlated with each of the scores of the respective test's section, it does not suggest a causal relationship between these pairs of variables, specifically, reducing the scores by making the test more difficult for example would not necessarily result in an increase in the participation rates.
-
-Given that the participation rates are highest in states where the SAT is mandatory and paid for, the College Board could lobby the state government of North Dakota, which has the lowest SAT participation rates for both years and does not mandate either the ACT or SAT nor pays for either tests, to adopt the SAT as the state's compulsory examination for high-schoolers and perhaps even sponsor the test.
-
-Additional data such as the universities within each state and the ranking of the universities throughout the U.S. might provide additional insight into the participation rate of either test as there may be individuals who take one test over the other with the intention of entering his/her desired college which may require either the SAT or the ACT.
+Numeric variables were selected based on its individual correlation with the target variable ``, conditioned on the correlation being above the threshold of 0.5. These variables were 
+`latitude`, `longitude`. `altitude`, `heading`, `speed` were added in despite their individual correlation with the target variable not meeting the condition as they are believed based on prior knowledge to be influential.
+ 
+Some features which were engineered such as `displacement_to_hkg` were not included as it presented problems of multicollinearity as they had a moderate correlation with each of the numeric.
+  
+Nominal features were omitted from the model as each of their p-values were more than the alpha value of 0.05, indicating that all levels or groups in the selected nominal variables have equal variance therefore it is likely not to have an impact on the target variable.
+ 
+The final model which had the lowest RMSE was the Random Forest regression model with the following variables:
+`latitude`, `longitude`. `altitude`, `heading`, `speed`
+   
+The feature importance of `longitude`, had the highest absolute values of all the chosen features which
+ implied that `calculated_time_before_arrival` of a flight is most heavily influenced by its current longitudinal position. `latitude` and `altitude` bore some importance but `speed` and `heading` had negligible importance.
+ 
+Take note that this final model may not necessarily be reliable when predicting the time taken for the flight to get from its current location to the destination airport, Hong Kong International Airport, outside the time periods of Jan 2017, as this model omits potentially important time-dependent variables such as enroute weather information which is not easily accessible but may affect the flight journey.
