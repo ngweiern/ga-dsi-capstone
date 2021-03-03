@@ -73,13 +73,13 @@ The weather information for Hong Kong International Airport in the month of Janu
 **admin.csv**
 |Feature|Type|Description|
 |:---|:---|:---|
-| **flight_id**               | *object* |Unique identifier for every flight record|
-| **flight_callsign**         | *object* |Used by Air Traffic Control to denote a specific flight|
-| **aircraft_model**          | *object* |Aircraft model of the flight|
-| **aircraft_registration**   | *object* |Each aircraft is assigned a registration number—often called a tail number—that is unique to the aircraft. Registration numbers are based on the country of registration, with the United Kingdom employing 'G' as their first letter identifier, followed by a hyphen and four further letters e.g. G-STBA. In the United States 'N' is used as the first letter followed by either letters or numbers e.g. N463UA.|
-| **airline**                 | *object* |Airline operating the flight|
-| **origin**                  | *object* |Country which the flight departed from |
-| **destination**             | *object* |Country which the flight arrived at|
+| **flight_id**               | *string* |Unique identifier for every flight record|
+| **flight_callsign**         | *string* |Used by Air Traffic Control to denote a specific flight|
+| **aircraft_model**          | *string* |Aircraft model of the flight|
+| **aircraft_registration**   | *string* |Each aircraft is assigned a registration number—often called a tail number—that is unique to the aircraft. Registration numbers are based on the country of registration, with the United Kingdom employing 'G' as their first letter identifier, followed by a hyphen and four further letters e.g. G-STBA. In the United States 'N' is used as the first letter followed by either letters or numbers e.g. N463UA.|
+| **airline**                 | *string* |Airline operating the flight|
+| **origin**                  | *string* |Country which the flight departed from |
+| **destination**             | *string* |Country which the flight arrived at|
 | **scheduled_departure_utc** |  *float* |Scheduled departure in Unix Time (UTC); elapsed seconds since January 1st 1970 00:00:00 UTC (Universal Time)|
 | **scheduled_arrival_utc**   |  *float* |Scheduled arrival in Unix Time (UTC); elapsed seconds since January 1st 1970 00:00:00 UTC (Universal Time)|
 | **real_departure_utc**      |  *float* |Real departure in Unix Time (UTC); elapsed seconds since January 1st 1970 00:00:00 UTC (Universal Time)|
@@ -103,15 +103,15 @@ The weather information for Hong Kong International Airport in the month of Janu
 | **sealevel_pressure**   |  *float* |Sea Level Pressure in millibar|
 | **visibility**    |  *float* |Visibility in miles|
 | **gust_speed**               | *int* |Wind Gust in knots|
-| **sky_level_1_coverage**         | *object* |Sky Level 1 Coverage|
-| **sky_level_2_coverage**          | *object* |Sky Level 2 Coverage|
-| **sky_level_3_coverage**   | *object* |Sky Level 3 Coverage|
-| **sky_level_4_coverage**                 | *object* |Sky Level 4 Coverage|
+| **sky_level_1_coverage**         | *string* |Sky Level 1 Coverage|
+| **sky_level_2_coverage**          | *string* |Sky Level 2 Coverage|
+| **sky_level_3_coverage**   | *string* |Sky Level 3 Coverage|
+| **sky_level_4_coverage**                 | *string* |Sky Level 4 Coverage|
 | **sky_level_1_altitude**                  | *int* |Sky Level 1 Altitude in feet |
 | **sky_level_2_altitude**             | *int* |Sky Level 2 Altitude in feet|
 | **sky_level_3_altitude** |  *int* |Sky Level 3 Altitude in feet|
 | **sky_level_4_altitude**   |  *int* |Sky Level 4 Altitude in feet|
-| **weather_codes**      |  *object* |Present Weather Codes (space seperated)|
+| **weather_codes**      |  *string* |Present Weather Codes (space seperated)|
 | **ice_accretion_1hr**   |  *float* |Ice Accretion over 1 Hour (inches)|
 | **ice_accretion_3hr**    |  *float* |Ice Accretion over 3 Hours (inches)|
 | **ice_accretion_6hr**                  | *float* |Ice Accretion over 6 Hours (inches)|
@@ -119,13 +119,13 @@ The weather information for Hong Kong International Airport in the month of Janu
 | **peak_wind_drct** |  *float* |Peak Wind Gust Direction (from PK WND METAR remark) (deg)|
 | **peak_wind_time**   |  *time* |Peak Wind Gust Time (from PK WND METAR remark)|
 | **apparent_temp**      |  *float* |Apparent Temperature (Wind Chill or Heat Index) in Fahrenheit|
-| **metar**   |  *object* |Unprocessed reported observation in METAR format
+| **metar**   |  *string* |Unprocessed reported observation in METAR format
 
 
 **trails-twn-to-hkg.feather**
 |Feature|Type|Description|
 |:---|:---|:---|
-| **flight_id**               | *object* |Unique identifier for every flight record|
+| **flight_id**               | *string* |Unique identifier for every flight record|
 | **timestamp_utc**         | *int* |Time of observation in Unix Time (UTC); elapsed seconds since January 1st 1970 00:00:00 UTC (Universal Time)|
 | **timestamp_dt**         | *int* |Timestamp of observation (YYYY-MM-DD HH:MM)|
 | **latitude**          | *float* |Latitude of aircraft's coordinate (WGS 84) at time of observation|
